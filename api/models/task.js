@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
-const ObjectId = mongoose.ObjectId
 
 const taskSchema = new Schema ({
     description: { type: String, required: true },

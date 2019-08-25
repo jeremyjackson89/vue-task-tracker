@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 // create task
 router.post('/', async (req, res) => {
     const { description, due_date } = req.body
-    
+
     const newTask = new Task()
     newTask.description = description
     newTask.due_date = due_date
@@ -27,7 +27,9 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const update = req.body
     update.updated_at = new Date()
+
     const updatedTask = await Task.findByIdAndUpdate(req.params.id, update, { new: true }).select('-__v')
+
     res.send({task: updatedTask})
 })
 

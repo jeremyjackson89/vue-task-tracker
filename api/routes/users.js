@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 import User from '../models/user'
-import Task from '../models/task'
 
 const router = Router()
 
@@ -19,7 +18,6 @@ router.post('/login', async (req, res) => {
         return res.status(401).send({error: 'Invalid password'})
     }
 
-    // we don't need these on the front
     delete user.password
 
     const signedJwt = jwt.sign({ id: user._id }, 'jwt_secret', { expiresIn: '1 year' })

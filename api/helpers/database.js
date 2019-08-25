@@ -59,7 +59,7 @@ const initializeDataIfEmpty = async () => {
             })
             newTask.save()
         })
-        // const newTasks = await Task.collection.insert(tasks)
+
         console.log(`Created test user and tasks`)
     }
 }
