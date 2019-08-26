@@ -171,7 +171,7 @@ export default {
 
 <style scoped>
     .dash-header {
-        adding-bottom: 15px;
+        padding-bottom: 15px;
         border-bottom: 1px solid #ccc;
         margin-bottom: 20px;
     }
