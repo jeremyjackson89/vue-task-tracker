@@ -9,13 +9,11 @@ const router = Router()
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
     const user = await User.findOne({ username: username }).select('-__v')
-
-    if (!user) {
-        return res.status(404).send({error: 'User not found'})
-    }
-
-    if (!(await bcrypt.compare(password, user.password))) {
-        return res.status(401).send({error: 'Invalid password'})
+    
+    const error = !user || !(await bcrypt.compare(password, user.password))
+    
+    if (error) {
+        return res.status(500).send({error: 'Invalid username or password'})
     }
 
     delete user.password
